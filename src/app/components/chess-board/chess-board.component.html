@@ -1,17 +1,7 @@
 <div id="chess-board" *ngIf="board">
-
-    <ng-container *ngIf="whiteView; else blackView">
-        <ng-container *ngFor="let line of lineWhite">
-            <ng-container *ngFor="let column of board[line]; let x = index">
-                <app-chess-tile [info]="board[line][x]" [number]="x+line"></app-chess-tile>
-            </ng-container>
+    <ng-container *ngFor="let line of getLines()">
+        <ng-container *ngFor="let column of board[line]; let x = index">
+            <app-chess-tile [info]="board[line][x]" [number]="x+line"></app-chess-tile>
         </ng-container>
     </ng-container>
-    <ng-template #blackView>
-        <ng-container *ngFor="let line of lineBlack">
-            <ng-container *ngFor="let column of board[line]; let x = index">
-                <app-chess-tile [info]="board[line][x]" [number]="x+line"></app-chess-tile>
-            </ng-container>
-        </ng-container>
-    </ng-template>
 </div>

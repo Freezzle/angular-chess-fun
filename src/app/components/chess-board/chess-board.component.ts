@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Chess, PieceType, Square } from 'chess.js';
 import { SquareModel } from '../models/square-model';
 
@@ -13,12 +13,19 @@ export class ChessBoardComponent implements OnInit {
   @Input()
   whiteView: boolean = true;
 
-  lineWhite = [0, 1, 2, 3, 4, 5, 6, 7];
-  lineBlack = [7, 6, 5, 4, 3, 2, 1, 0];
+  lines = [0, 1, 2, 3, 4, 5, 6, 7];
 
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  public getLines() {
+    if(this.whiteView) {
+      return [0, 1, 2, 3, 4, 5, 6, 7];
+    } else {
+      return [7, 6, 5, 4, 3, 2, 1, 0];
+    }
   }
 }
