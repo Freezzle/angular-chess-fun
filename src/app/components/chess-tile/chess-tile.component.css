@@ -1,8 +1,25 @@
-.chess-tile {
+.tile {
     display: grid;
     place-content: center;
-    height: 100px;
     width: 100px;
+    height: 100px;
+}
+
+.chess-piece {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80px;
+    cursor: move;
+}
+
+.chess-piece:hover {
+    cursor: grab;
+}
+
+.chess-piece:active {
+    cursor: grabbing;
 }
 
 .black-tile {
@@ -10,10 +27,13 @@
 }
 
 .white-tile {
-    background-color: #FFFFFF;
+    background-color: #ebecd0;
 }
 
-.chess-tile img {
-    width: 90px;
-    height: 90px;
+.black-tile:active {
+    background-color: #ffc55b;
+}
+
+.white-tile:active {
+    background-color: #ffd28e;
 }

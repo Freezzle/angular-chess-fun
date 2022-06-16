@@ -1,7 +1,7 @@
-<div id="chess-board" *ngIf="board">
-    <ng-container *ngFor="let line of getLines()">
+<div id="chess-board" *ngIf="board" #boardRef>
+    <ng-container *ngFor="let line of lines">
         <ng-container *ngFor="let column of board[line]; let x = index">
-            <app-chess-tile [info]="board[line][x]" [number]="x+line"></app-chess-tile>
+            <chess-tile [info]="board[line][x]" [number]="x+line"></chess-tile>
         </ng-container>
     </ng-container>
 </div>

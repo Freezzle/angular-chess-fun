@@ -1,9 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewRef } from '@angular/core';
 import { Chess, PieceType, Square } from 'chess.js';
-import { SquareModel } from '../models/square-model';
 
 @Component({
-  selector: 'app-chess-board',
+  selector: 'chess-board',
   templateUrl: './chess-board.component.html',
   styleUrls: ['./chess-board.component.css']
 })
@@ -15,10 +14,14 @@ export class ChessBoardComponent implements OnInit {
 
   lines = [0, 1, 2, 3, 4, 5, 6, 7];
 
+  grabPosition: {x: number, y: number} | undefined;
+  activePiece: HTMLElement | undefined;
+
   constructor() {
   }
 
   ngOnInit(): void {
+    this.lines = this.getLines();
   }
 
   public getLines() {

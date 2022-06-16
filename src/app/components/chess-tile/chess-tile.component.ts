@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PieceType, Square } from 'chess.js';
 
 @Component({
-  selector: 'app-chess-tile',
+  selector: 'chess-tile',
   templateUrl: './chess-tile.component.html',
   styleUrls: ['./chess-tile.component.css']
 })
@@ -14,15 +14,25 @@ export class ChessTileComponent implements OnInit {
   @Input()
   number: number = 0;
 
+  @Input()
+  name: string = '';
+
+  @Output()
+  clickEvent: EventEmitter<string> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public getImage() {
+  public getImage():string {
     if(this.info?.type) {
       return "assets/images/" + this.info?.type + "-" + this.info?.color + ".png";
     }
-    return null;
+    return '';
+  }
+
+  public onClickTile() {
+    this.clickEvent.emit(this.info?.square);
   }
 }
